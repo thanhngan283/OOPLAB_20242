@@ -1,0 +1,18 @@
+1. If user choose "Cancel", the program will find that the user option is "No"
+2. To have the result only have 2 option Yes/No or I do/I don't. We use the function JOptionPane.showOption instead if JOptionPane.showConfirmDialog.
+   This is the code: 
+
+import javax.swing.JOptionPane;
+
+public class CustomOption {
+    public static void main(String[] args) {
+        int choice = JOptionPane.showOptionDialog(null,"What is your answer?","Question!",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new String[]{"I do", "I don't"},"I do");
+        if (choice == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null, "You accepted.");
+        } else if (choice == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "You declined.");
+        } else if (choice == JOptionPane.CLOSED_OPTION) {
+            JOptionPane.showMessageDialog(null, "Dialog closed without making a choice.");
+        }
+    }
+}

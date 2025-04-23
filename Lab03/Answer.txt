@@ -1,0 +1,38 @@
+Question 1: Write a toString() method for the DigitalVideoDisc class. What should be the
+return type of this method?
+Answer: The toString() method is used to provide a string representation of an object. In this case, you can create a toString() method for the DigitalVideoDisc class that returns a string with the desired format for the DVD. This will help print the details of the ordered items in the cart
+
+Question 2: If the passing object is not an instance of Media, what happens?
+Answer: When you override the equals() method and the parameter obj is not an instance of the class you're dealing with (e.g., not an instance of Media in the Media class), it will cause a ClassCastException if you try to cast it. To handle this properly, you should first check whether obj is an instance of the Media class (or Track for the Track class) before proceeding with the comparison.
+If the object is not an instance of the expected class, the equals() method should return false, indicating that the objects are not equal. This prevents unnecessary exceptions and ensures that objects of different types are not considered equal.
+
+Question 3: What are the advantages of Polymorphism?
+Answer: Polymorphism enables code reusability, flexibility, and maintainability, allowing methods to operate on objects of different types without needing to rewrite code. It also promotes cleaner, more readable code by allowing the same method to handle different object types dynamically.
+
+Question 4: How is Inheritance useful to achieve Polymorphism in Java?
+Answer: Inheritance enables polymorphism by allowing subclasses to override methods from a superclass. This lets the program dynamically choose the correct method based on the object's actual type at runtime, promoting flexibility and extensibility.
+
+Question 5: What are the differences between Polymorphism and Inheritance in Java?
+Answer: Inheritance allows one class to inherit the properties and behaviors of another, establishing a class hierarchy. Polymorphism, on the other hand, allows a single method to behave differently depending on the object type. While inheritance enables polymorphism, polymorphism focuses on method behavior, not class structure.
+
+Question 6: What class should implement the Comparable interface?
+Answer: The class that should implement the Comparable interface is the class representing the media items, which could be DigitalVideoDisc, Book, or CompactDisc. These classes should implement Comparable to define their natural ordering.
+
+Question 7: In those classes, how should you implement the compareTo()method to reflect the ordering that we want?
+Answer: In the compareTo() method, you can implement the ordering logic based on the fields you want to sort by. For instance, if you want to sort by title first, followed by cost, you would do something like:
+public int compareTo(Media other) {
+    // Compare by title
+    int result = this.title.compareTo(other.title);
+    if (result != 0) {
+        return result;
+    }
+    // If titles are the same, compare by cost
+    return Float.compare(this.cost, other.cost);
+}
+
+Question 8: Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this
+Comparable interface approach?
+Answer: No, with the Comparable interface, you can only define one natural ordering per class. However, if you need multiple sorting criteria (like by title then cost and by cost then title), you should use the Comparator interface, which allows you to define multiple ways to compare objects.
+
+Question 9: Suppose the DVDs have a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+Answer: To allow DVDs to have a different ordering rule, you can override the compareTo() method in the DigitalVideoDisc class specifically.
